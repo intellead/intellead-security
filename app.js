@@ -1,3 +1,5 @@
+'use strict';
+
 var express = require('express');
 var path = require('path');
 var favicon = require('serve-favicon');
@@ -5,9 +7,9 @@ var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 
-var index = require('./routes/index');
-
+var router = express.Router();
 var app = express();
+var Dao = require('./src/Dao');
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -21,16 +23,44 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.use('/', index);
+app.use(function(req, res, next) {
+    res.header("Access-Control-Allow-Origin", "*");
+    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept, Cache-Control");
+    next();
+});
 
-app.post('/login', function (req, res) {
-    console.log(req.body);
+app.use('/', router);
+
+app.post('/login', function(req, res, next) {
+    var email = req.body.email;
+    var encryptedPassword = req.body.password;
+    console.log('email: ' + email);
+    console.log('password: ' + encryptedPassword);
+    res.sendStatus(200);
+});
+
+router.get('/login', function(req, res, next) {
     res.sendStatus(200);
 });
 
 app.post('/registerUser', function (req, res) {
-    var body = req.body;
-    console.log(req.body);
+    var name = req.body.name;
+    var email = req.body.email;
+    var password = req.body.password;
+    var user = {};
+    user.name = name;
+    user.email = email;
+    user.password = password;
+    var dao = new Dao();
+    dao.saveUser(lead, function (err, result) {
+        if (err) {
+            return res.sendStatus(400);
+        }
+        res.sendStatus(200);
+    });
+});
+
+router.get('/registerUser', function(req, res, next) {
     res.sendStatus(200);
 });
 
