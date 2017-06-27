@@ -24,23 +24,13 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/', index);
 
 app.post('/login', function (req, res) {
-    var body = req.body;
-    //if (!body) return res.sendStatus(400);
     console.log(req.body);
     res.sendStatus(200);
 });
 
 app.post('/registerUser', function (req, res) {
     var body = req.body;
-    //if (!body) return res.sendStatus(400);
     console.log(req.body);
-    // var dao = new Dao();
-    // dao.saveAndUpdate(lead, function (err, result) {
-    //     if (err) {
-    //         return res.sendStatus(400);
-    //     }
-    //     res.sendStatus(200);
-    // });
     res.sendStatus(200);
 });
 
