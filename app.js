@@ -52,7 +52,7 @@ app.post('/registerUser', function (req, res) {
     user.email = email;
     user.password = password;
     var dao = new Dao();
-    dao.saveUser(lead, function (err, result) {
+    dao.saveUser(user, function (err, result) {
         if (err) {
             return res.sendStatus(400);
         }
