@@ -51,6 +51,7 @@ app.post('/registerUser', function (req, res) {
     user.name = name;
     user.email = email;
     user.password = password;
+    user.active = true;
     var dao = new Dao();
     dao.saveUser(user, function (err, result) {
         if (err) {
