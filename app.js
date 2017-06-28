@@ -51,7 +51,7 @@ router.get('/login', function(req, res, next) {
 
 app.post('/registerUser', function (req, res) {
     var user = new User(req.body.email, req.body.password, req.body.name);
-    new Dao().saveUser(JSON.stringify(user), function (err, result) {
+    new Dao().saveUser(user, function (err, result) {
         if (err) {
             return res.sendStatus(400);
         }
