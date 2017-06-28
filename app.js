@@ -9,6 +9,7 @@ var bodyParser = require('body-parser');
 
 var router = express.Router();
 var app = express();
+var LoginService = require('./src/LoginService');
 var Dao = require('./src/Dao');
 var User = require('./src/User');
 
