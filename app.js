@@ -42,9 +42,11 @@ app.post('/login', function(req, res, next) {
         if (err) {
             return res.sendStatus(400);
         }
-        console.log(result);
+        if (result) {
+            return res.sendStatus(200);
+        }
+        res.sendStatus(401);
     });
-    res.sendStatus(200);
 });
 
 router.get('/login', function(req, res, next) {
