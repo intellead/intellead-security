@@ -34,7 +34,7 @@ app.use('/', router);
 
 app.post('/login', function(req, res, next) {
     var user = new User(req.body.email, req.body.password);
-    new Dao().findUser(JSON.stringify(user), function (err, result) {
+    new Dao().findUser(user, function (err, result) {
         if (err) {
             return res.sendStatus(400);
         }
