@@ -32,7 +32,7 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="UserService.js" pinned="false" current-in-tab="true">
+      <file leaf-file-name="UserService.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/UserService.js">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="136">
@@ -42,11 +42,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Dao.js" pinned="false" current-in-tab="false">
+      <file leaf-file-name="Dao.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/Dao.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-85">
-              <caret line="7" column="4" lean-forward="false" selection-start-line="7" selection-start-column="4" selection-end-line="7" selection-end-column="4" />
+            <state relative-caret-position="119">
+              <caret line="16" column="21" lean-forward="true" selection-start-line="16" selection-start-column="21" selection-end-line="16" selection-end-column="21" />
               <folding />
             </state>
           </provider>
@@ -88,8 +88,8 @@
         <option value="$PROJECT_DIR$/src/User.js" />
         <option value="$PROJECT_DIR$/src/LoginService.js" />
         <option value="$PROJECT_DIR$/app.js" />
-        <option value="$PROJECT_DIR$/src/Dao.js" />
         <option value="$PROJECT_DIR$/src/UserService.js" />
+        <option value="$PROJECT_DIR$/src/Dao.js" />
       </list>
     </option>
   </component>
@@ -277,12 +277,12 @@
       <workItem from="1498601193048" duration="112000" />
       <workItem from="1498601617263" duration="4947000" />
       <workItem from="1498608727044" duration="1546000" />
-      <workItem from="1498668825387" duration="13085000" />
+      <workItem from="1498668825387" duration="13192000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="33590000" />
+    <option name="totallyTimeSpent" value="33697000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -521,18 +521,18 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Dao.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-85">
-          <caret line="7" column="4" lean-forward="false" selection-start-line="7" selection-start-column="4" selection-end-line="7" selection-end-column="4" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/UserService.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="136">
           <caret line="8" column="22" lean-forward="false" selection-start-line="8" selection-start-column="22" selection-end-line="8" selection-end-column="22" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Dao.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="119">
+          <caret line="16" column="21" lean-forward="true" selection-start-line="16" selection-start-column="21" selection-end-line="16" selection-end-column="21" />
           <folding />
         </state>
       </provider>
