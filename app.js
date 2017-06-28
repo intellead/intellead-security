@@ -10,6 +10,7 @@ var bodyParser = require('body-parser');
 var router = express.Router();
 var app = express();
 var Dao = require('./src/Dao');
+var User = require('./src/User');
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -32,13 +33,8 @@ app.use(function(req, res, next) {
 app.use('/', router);
 
 app.post('/login', function(req, res, next) {
-    var dao = new Dao();
-    var email = req.body.email;
-    var password = req.body.password;
-    var user = {};
-    user.email = email;
-    user.password = password;
-    dao.findUser(user, function (err, result) {
+    var user = new User(req.body.email, req.body.password);
+    new Dao().findUser(JSON.stringify(user), function (err, result) {
         if (err) {
             return res.sendStatus(400);
         }
@@ -54,16 +50,8 @@ router.get('/login', function(req, res, next) {
 });
 
 app.post('/registerUser', function (req, res) {
-    var name = req.body.name;
-    var email = req.body.email;
-    var password = req.body.password;
-    var user = {};
-    user.name = name;
-    user.email = email;
-    user.password = password;
-    user.active = false;
-    var dao = new Dao();
-    dao.saveUser(user, function (err, result) {
+    var user = new User(req.body.email, req.body.password, req.body.name);
+    new Dao().saveUser(JSON.stringify(user), function (err, result) {
         if (err) {
             return res.sendStatus(400);
         }

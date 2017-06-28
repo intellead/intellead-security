@@ -33,16 +33,24 @@ class Dao {
                     function(err, result) {
                         db.close();
                         callback(err, result);
-                    });
+                });
+            }
+        });
+    }
 
-
-                // db.collection('users').find(
-                //     {"email":user.email, "password":user.password, "active":true},
-                //     function(err, result) {
-                //         db.close();
-                //         callback(err, result);
-                //     }
-                // );
+    updateUserToken(email, tokenGenerated, callback) {
+        MongoClient.connect(url, function (err, db) {
+            if (err) {
+                console.log('Unable to connect to the mongoDB server. Error:', err);
+                callback(err);
+            } else {
+                db.collection('users').update(
+                    {"email" : email},
+                    {"currentToken" : tokenGenerated},
+                    function(err, result) {
+                        db.close();
+                        callback(err, result);
+                });
             }
         });
     }
