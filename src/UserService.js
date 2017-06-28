@@ -5,18 +5,6 @@ var md5 = require('md5');
 
 class UserService {
 
-    invalid(user){
-        if (user.name == null || user.name == undefined ||
-            user.email == null || user.email ==undefined ||
-            user.password == null | user.password == undefined) {
-            console.log(user.name);
-            console.log(user.email);
-            console.log(user.password);
-            return true;
-        }
-        return false;
-    }
-
     register(user, callback) {
         new Dao().saveUser(user, function (err, statusCode) {
             if (err) {
