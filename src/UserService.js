@@ -9,6 +9,9 @@ class UserService {
         if (user.name == null || user.name == undefined ||
             user.email == null || user.email ==undefined ||
             user.password == null | user.password == undefined) {
+            console.log(user.name);
+            console.log(user.email);
+            console.log(user.password);
             return true;
         }
         return false;
