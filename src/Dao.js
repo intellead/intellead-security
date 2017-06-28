@@ -18,7 +18,7 @@ class Dao {
                     console.log('RESULT: ' + result);
                     if (result) {
                         db.close();
-                        return callback(err, 409);
+                        return callback(err, 412);
                     }
                     db.collection('users').insertOne(
                         user,
