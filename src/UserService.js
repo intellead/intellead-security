@@ -6,12 +6,12 @@ var md5 = require('md5');
 class UserService {
 
     register(user, callback) {
-        new Dao().saveUser(user, function (err, result) {
+        new Dao().saveUser(user, function (err, statusCode) {
             if (err) {
                 console.log(err);
                 return callback(400);
             }
-            callback(200);
+            callback(statusCode);
         });
     }
 
