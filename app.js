@@ -35,7 +35,7 @@ app.use('/', router);
 
 app.post('/login', function(req, res, next) {
     var user = new User(req.body.email, req.body.password);
-    new LoginService.login(user, function(statusCode, result) {
+    new LoginService().login(user, function(statusCode, result) {
         console.log(statusCode);
         console.log(result);
         return res.send(statusCode, result);
