@@ -45,6 +45,9 @@ router.get('/login', function(req, res, next) {
 });
 
 app.post('/registerUser', function (req, res) {
+    console.log(req.body.email);
+    console.log(req.body.name);
+    console.log(req.body.password);
     var user = new User(req.body.email, req.body.password, req.body.name);
     var userService = new UserService();
     if (userService.invalid(user)){

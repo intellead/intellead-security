@@ -15,7 +15,6 @@ class Dao {
                     if (err) {
                         return callback(err);
                     }
-                    console.log('RESULT: ' + result);
                     if (result) {
                         db.close();
                         return callback(err, 409);
