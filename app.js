@@ -39,6 +39,8 @@ app.post('/login', function(req, res, next) {
             return res.sendStatus(400);
         }
         if (result) {
+            req.session.userCurrentToken = new LoginService().generateToken(user.email, user.password);
+            res.write(userCurrentToken);
             return res.sendStatus(200);
         }
         res.sendStatus(401);
