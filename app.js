@@ -47,7 +47,6 @@ app.post('/login', function(req, res, next) {
                 }
                 if (result) {
                     console.log(result);
-                    res.currentUserToken = result;
                     return res.sendStatus(200).send(result);
                 }
             });
