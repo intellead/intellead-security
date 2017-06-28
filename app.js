@@ -34,8 +34,11 @@ app.use(function(req, res, next) {
 app.use('/', router);
 
 app.post('/login', function(req, res, next) {
+    console.log('1');
     var user = new User(req.body.email, req.body.password);
+    console.log('2');
     new LoginService().login(user, function(statusCode, result) {
+        console.log('10');
         console.log(statusCode);
         console.log(result);
         return res.send(statusCode, result);

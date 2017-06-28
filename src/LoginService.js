@@ -6,21 +6,28 @@ var md5 = require('md5');
 class LoginService {
 
     login(user, callback) {
+        console.log('3');
         new Dao().findUser(user, function (err, result) {
+            console.log('4');
             if (err) {
+                console.log('5');
                 return 400;
             }
             if (result) {
+                console.log('6');
                 this.generateToken(user.email, user.password, function (err, token) {
+                    console.log('7');
                     if (err) {
                         console.log(err);
                         return 400;
                     }
                     if (token) {
+                        console.log('8');
                         return (200, token);
                     }
                 });
             } else {
+                console.log('9');
                 return 401;
             }
         });
