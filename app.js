@@ -35,24 +35,28 @@ app.use('/', router);
 
 app.post('/login', function(req, res, next) {
     var user = new User(req.body.email, req.body.password);
-    new Dao().findUser(user, function (err, result) {
-        if (err) {
-            return res.sendStatus(400);
-        }
-        if (result) {
-            new LoginService().generateToken(user.email, user.password, function (err, result) {
-                if (err) {
-                    console.log(err);
-                    return res.sendStatus(400);
-                }
-                if (result) {
-                    return res.send(200, result);
-                }
-            });
-        } else {
-            res.sendStatus(401);
-        }
+    new LoginService.login(user, function(statusCode, result) {
+        res.send(statusCode, result);
     });
+
+    // new Dao().findUser(user, function (err, result) {
+    //     if (err) {
+    //         return res.sendStatus(400);
+    //     }
+    //     if (result) {
+    //         new LoginService().generateToken(user.email, user.password, function (err, result) {
+    //             if (err) {
+    //                 console.log(err);
+    //                 return res.sendStatus(400);
+    //             }
+    //             if (result) {
+    //                 return res.send(200, result);
+    //             }
+    //         });
+    //     } else {
+    //         res.sendStatus(401);
+    //     }
+    // });
 });
 
 router.get('/login', function(req, res, next) {
