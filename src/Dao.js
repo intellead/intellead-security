@@ -13,6 +13,7 @@ class Dao {
             } else {
                 db.collection('users').findOne({"email":user.email}, function(err, result) {
                     if (err) {
+                        db.close();
                         return callback(err);
                     }
                     if (result) {
@@ -23,6 +24,7 @@ class Dao {
                         user,
                         function(err, result) {
                             if (err) {
+                                db.close();
                                 return callback(err);
                             }
                             console.log("Inserted a document into the [users] collection with email: " + user.email);
