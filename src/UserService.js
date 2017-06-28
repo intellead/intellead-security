@@ -21,7 +21,7 @@ class UserService {
                 return callback(400);
             }
             if (result) {
-                new LoginService().generateToken(user.email, user.password, function (err, token) {
+                new UserService().generateToken(user.email, user.password, function (err, token) {
                     if (err) {
                         console.log(err);
                         return callback(400);
