@@ -47,6 +47,7 @@ app.post('/login', function(req, res, next) {
                 }
                 if (result) {
                     console.log(result);
+                    res.write(result);
                     return res.sendStatus(200);
                 }
             });
