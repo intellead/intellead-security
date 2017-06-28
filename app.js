@@ -46,7 +46,11 @@ router.get('/login', function(req, res, next) {
 
 app.post('/registerUser', function (req, res) {
     var user = new User(req.body.email, req.body.password, req.body.name);
-    new UserService().register(user, function(statusCode) {
+    var userService = new UserService();
+    if (userService.invalid(user)){
+        return res.sendStatus(412);
+    }
+    userService.register(user, function(statusCode) {
         return res.sendStatus(statusCode);
     });
 });
