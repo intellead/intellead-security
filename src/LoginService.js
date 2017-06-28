@@ -11,7 +11,7 @@ class LoginService {
             console.log('4');
             if (err) {
                 console.log('5');
-                return 400;
+                return callback(400);
             }
             if (result) {
                 console.log('6');
@@ -19,16 +19,16 @@ class LoginService {
                     console.log('7');
                     if (err) {
                         console.log(err);
-                        return 400;
+                        return callback(400);
                     }
                     if (token) {
                         console.log('8');
-                        return (200, token);
+                        return callback(200, token);
                     }
                 });
             } else {
                 console.log('9');
-                return 401;
+                return callback(401);
             }
         });
     }
