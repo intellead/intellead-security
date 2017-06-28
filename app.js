@@ -36,9 +36,10 @@ app.use('/', router);
 app.post('/login', function(req, res, next) {
     var user = new User(req.body.email, req.body.password);
     new LoginService.login(user, function(statusCode, result) {
-        res.send(statusCode, result);
+        console.log(statusCode);
+        console.log(result);
+        return res.send(statusCode, result);
     });
-
     // new Dao().findUser(user, function (err, result) {
     //     if (err) {
     //         return res.sendStatus(400);
