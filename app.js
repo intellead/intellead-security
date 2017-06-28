@@ -41,7 +41,7 @@ app.post('/login', function(req, res, next) {
         }
         if (result) {
             var userCurrentToken = new LoginService().generateToken(user.email, user.password);
-            res.write(userCurrentToken);
+            //res.write(userCurrentToken);
             return res.sendStatus(200);
         }
         res.sendStatus(401);
