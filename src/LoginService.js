@@ -15,7 +15,7 @@ class LoginService {
             }
             if (result) {
                 console.log('6');
-                this.generateToken(user.email, user.password, function (err, token) {
+                new LoginService().generateToken(user.email, user.password, function (err, token) {
                     console.log('7');
                     if (err) {
                         console.log(err);
