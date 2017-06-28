@@ -49,8 +49,9 @@ app.post('/login', function(req, res, next) {
                     return res.sendStatus(200);
                 }
             });
+        } else {
+            res.sendStatus(401);
         }
-        res.sendStatus(401);
     });
 });
 
