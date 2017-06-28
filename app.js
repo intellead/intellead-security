@@ -9,7 +9,7 @@ var bodyParser = require('body-parser');
 
 var router = express.Router();
 var app = express();
-var LoginService = require('./src/LoginService');
+var UserService = require('./src/UserService');
 var Dao = require('./src/Dao');
 var User = require('./src/User');
 
@@ -34,33 +34,10 @@ app.use(function(req, res, next) {
 app.use('/', router);
 
 app.post('/login', function(req, res, next) {
-    console.log('1');
     var user = new User(req.body.email, req.body.password);
-    console.log('2');
-    new LoginService().login(user, function(statusCode, result) {
-        console.log('10');
-        console.log(statusCode);
-        console.log(result);
-        return res.send(statusCode, result);
+    new UserService().login(user, function(statusCode, userToken) {
+        return res.send(statusCode, userToken);
     });
-    // new Dao().findUser(user, function (err, result) {
-    //     if (err) {
-    //         return res.sendStatus(400);
-    //     }
-    //     if (result) {
-    //         new LoginService().generateToken(user.email, user.password, function (err, result) {
-    //             if (err) {
-    //                 console.log(err);
-    //                 return res.sendStatus(400);
-    //             }
-    //             if (result) {
-    //                 return res.send(200, result);
-    //             }
-    //         });
-    //     } else {
-    //         res.sendStatus(401);
-    //     }
-    // });
 });
 
 router.get('/login', function(req, res, next) {
@@ -69,11 +46,8 @@ router.get('/login', function(req, res, next) {
 
 app.post('/registerUser', function (req, res) {
     var user = new User(req.body.email, req.body.password, req.body.name);
-    new Dao().saveUser(user, function (err, result) {
-        if (err) {
-            return res.sendStatus(400);
-        }
-        res.sendStatus(200);
+    new UserService().register(user, function(statusCode) {
+        return res.sendStatus(statusCode);
     });
 });
 

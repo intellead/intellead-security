@@ -3,31 +3,34 @@
 var Dao = require('./Dao');
 var md5 = require('md5');
 
-class LoginService {
+class UserService {
+
+    register(user, callback) {
+        new Dao().saveUser(user, function (err, result) {
+            if (err) {
+                console.log(err);
+                return callback(400);
+            }
+            callback(200);
+        });
+    }
 
     login(user, callback) {
-        console.log('3');
         new Dao().findUser(user, function (err, result) {
-            console.log('4');
             if (err) {
-                console.log('5');
                 return callback(400);
             }
             if (result) {
-                console.log('6');
                 new LoginService().generateToken(user.email, user.password, function (err, token) {
-                    console.log('7');
                     if (err) {
                         console.log(err);
                         return callback(400);
                     }
                     if (token) {
-                        console.log('8');
                         return callback(200, token);
                     }
                 });
             } else {
-                console.log('9');
                 return callback(401);
             }
         });
@@ -38,7 +41,8 @@ class LoginService {
         var tokenGeneratedMd5 = md5(tokenGeneratedStr);
         new Dao().updateUserToken(email, tokenGeneratedMd5, function (err, result) {
             if (err) {
-                callback(err);
+                console.log(err);
+                return callback(err);
             }
             if (result) {
                 callback(err, tokenGeneratedMd5);
@@ -48,4 +52,4 @@ class LoginService {
 
 }
 
-module.exports = LoginService;
+module.exports = UserService;
