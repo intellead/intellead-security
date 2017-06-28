@@ -41,8 +41,13 @@ app.post('/login', function(req, res, next) {
         }
         if (result) {
             new LoginService().generateToken(user.email, user.password, function (err, result) {
-                //res.write(userCurrentToken);
-                return res.sendStatus(200);
+                if (err) {
+                    console.log(err);
+                    return res.sendStatus(400);
+                }
+                if (result) {
+                    return res.sendStatus(200);
+                }
             });
         }
         res.sendStatus(401);
