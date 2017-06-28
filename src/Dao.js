@@ -23,5 +23,22 @@ class Dao {
         });
     }
 
+    findUser(user, callback) {
+        MongoClient.connect(url, function (err, db) {
+            if (err) {
+                console.log('Unable to connect to the mongoDB server. Error:', err);
+                callback(err);
+            } else {
+                db.collection('users').find(
+                    {"email":user.email, "password":user.password, "active":true},
+                    function(err, result) {
+                        db.close();
+                        callback(err, result);
+                    }
+                );
+            }
+        });
+    }
+
 }
 module.exports = Dao;

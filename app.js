@@ -32,10 +32,19 @@ app.use(function(req, res, next) {
 app.use('/', router);
 
 app.post('/login', function(req, res, next) {
+    var dao = new Dao();
     var email = req.body.email;
-    var encryptedPassword = req.body.password;
-    console.log('email: ' + email);
-    console.log('password: ' + encryptedPassword);
+    var password = req.body.password;
+    var user = {};
+    user.email = email;
+    user.password = password;
+    dao.findUser(user, function (err, result) {
+        if (err) {
+            return res.sendStatus(400);
+        }
+        //
+        console.log(result);
+    });
     res.sendStatus(200);
 });
 
