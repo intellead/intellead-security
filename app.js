@@ -42,7 +42,6 @@ app.post('/login', function(req, res, next) {
         if (err) {
             return res.sendStatus(400);
         }
-        //
         console.log(result);
     });
     res.sendStatus(200);
