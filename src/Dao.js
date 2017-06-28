@@ -46,7 +46,7 @@ class Dao {
             } else {
                 db.collection('users').update(
                     {"email" : email},
-                    {"currentToken" : tokenGenerated},
+                    {'$set':{'currentToken':tokenGenerated}},
                     function(err, result) {
                         db.close();
                         callback(err, result);
