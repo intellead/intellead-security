@@ -46,8 +46,8 @@ app.post('/login', function(req, res, next) {
                     return res.sendStatus(400);
                 }
                 if (result) {
-                    console.log(result);
-                    return res.sendStatus(200).send(result);
+                    res.status(200);
+                    return result;
                 }
             });
         } else {
