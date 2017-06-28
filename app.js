@@ -40,9 +40,10 @@ app.post('/login', function(req, res, next) {
             return res.sendStatus(400);
         }
         if (result) {
-            var userCurrentToken = new LoginService().generateToken(user.email, user.password);
-            //res.write(userCurrentToken);
-            return res.sendStatus(200);
+            new LoginService().generateToken(user.email, user.password, function (err, result) {
+                //res.write(userCurrentToken);
+                return res.sendStatus(200);
+            });
         }
         res.sendStatus(401);
     });
