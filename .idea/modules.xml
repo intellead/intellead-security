@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/intellead-security.iml" filepath="$PROJECT_DIR$/.idea/intellead-security.iml" />
+      <module fileurl="file://$PROJECT_DIR$/intellead-security.iml" filepath="$PROJECT_DIR$/intellead-security.iml" />
     </modules>
   </component>
 </project>
