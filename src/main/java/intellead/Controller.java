@@ -11,6 +11,11 @@ public class Controller {
     @Autowired
     CustomerRepository customerRepository;
 
+    @RequestMapping("/")
+    public String all() {
+        return "intellead-security";
+    }
+
     @RequestMapping("/auth/{token}")
     public Customer auth(@PathVariable String token) {
         Customer customer = customerRepository.findByToken(token);
