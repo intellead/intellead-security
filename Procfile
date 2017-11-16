@@ -1,1 +1,1 @@
-web: java $JAVA_OPTS -jar target/*.jar
+web: java $JAVA_OPTS -jar target/intellead-security-1.0-SNAPSHOT.jar
