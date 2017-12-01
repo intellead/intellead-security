@@ -17,7 +17,6 @@
 */
 package intellead;
 
-import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,10 +25,14 @@ import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
 
+import static intellead.CustomerBuilder.customerWith;
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.hamcrest.Matchers.is;
+import static org.mockito.Matchers.anyString;
+import static org.mockito.Mockito.when;
+import static org.springframework.http.MediaType.APPLICATION_JSON_UTF8;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
 @RunWith(SpringRunner.class)
 @WebMvcTest
@@ -58,8 +61,24 @@ public class ControllerTest {
 
     @Test
     public void testInvalidToken() throws Exception {
+        when(customerRepository.findByToken(anyString())).thenReturn(null);
         mockMvc.perform(get("/auth/JfO38nY"))
                 .andExpect(status().isForbidden());
+    }
+
+    @Test
+    public void testValidToken() throws Exception {
+        when(customerRepository.findByToken(anyString())).thenReturn(
+                customerWith().id(1)
+                              .name("intellead")
+                              .token("JfO38nY")
+                              .build());
+        mockMvc.perform(get("/auth/JfO38nY"))
+                .andExpect(status().isOk())
+                .andExpect(content().contentType(APPLICATION_JSON_UTF8))
+                .andExpect(jsonPath("$.id", is(1)))
+                .andExpect(jsonPath("$.name", is("intellead")))
+                .andExpect(jsonPath("$.token", is("JfO38nY")));
     }
 
 }
