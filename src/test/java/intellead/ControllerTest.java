@@ -56,4 +56,10 @@ public class ControllerTest {
                 .andExpect(content().string("intellead-security"));
     }
 
+    @Test
+    public void testInvalidToken() throws Exception {
+        mockMvc.perform(get("/auth/JfO38nY"))
+                .andExpect(status().isForbidden());
+    }
+
 }
