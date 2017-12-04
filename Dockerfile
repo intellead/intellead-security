@@ -8,7 +8,7 @@ COPY src/main/java/intellead ./src/main/java/intellead
 
 RUN mvn clean compile package
 
-COPY application-docker.yml ./application.yml
+COPY src/main/resources/application-docker.yml ./application.yml
 
 EXPOSE 8080
 
