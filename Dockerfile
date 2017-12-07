@@ -4,6 +4,8 @@ WORKDIR /usr/src/intellead/intellead-security
 
 COPY pom.xml ./
 
+RUN mvn verify clean --fail-never
+
 COPY src/main/java/intellead ./src/main/java/intellead
 
 RUN mvn clean compile package
