@@ -1,5 +1,7 @@
 # Intellead Security
 
+[![Build Status](https://travis-ci.org/intellead/intellead-security.svg?branch=master)](https://travis-ci.org/intellead/intellead-security)
+[![codecov](https://codecov.io/gh/intellead/intellead-security/branch/master/graph/badge.svg)](https://codecov.io/gh/intellead/intellead-security)
 
 Intellead Security aims to be an authentication and authorization service for the intellead ecosystem.
 
