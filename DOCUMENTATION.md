@@ -34,4 +34,4 @@ This should be as easy as possible for you but there are few things to consider 
   * Even if you have write access to the repository, do not directly push or merge pull-requests. Let another team member review your pull request and approve.
 
 ## Copyrights and Licence
-Project copyright and license is available at [LICENSE.md](./LICENSE.md).
+Project copyright and license is available at [LICENSE](./LICENSE).
