@@ -55,8 +55,7 @@ public class ControllerTest {
     @Test
     public void testAll() throws Exception {
         mockMvc.perform(get("/"))
-                .andExpect(status().isOk())
-                .andExpect(content().string("intellead-security"));
+                .andExpect(status().isNotFound());
     }
 
     @Test
